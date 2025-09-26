@@ -1,0 +1,5 @@
+streamlit
+nltk
+networkx
+pyvis
+pandas
