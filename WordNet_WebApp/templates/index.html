@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WordNet Explorer</title>
+</head>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="container">
+        <h1>WordNet Explorer</h1>
+        <form method="post">
+            <input type="text" name="word" placeholder="Enter a word" required>
+            <button type="submit">Explore</button>
+        </form>
+        {% if results is none %}
+            <p class="error">No entries found for '{{ word }}'.</p>
+        {% elif results %}
+            <h2>Results for '{{ word }}'</h2>
+            {% for item in results %}
+                <div class="card">
+                    <h3>Sense {{ item.sense }}</h3>
+                    <p><strong>Definition:</strong> {{ item.definition }}</p>
+                    <p><strong>Examples:</strong> {{ item.examples }}</p>
+                    <p><strong>Synonyms:</strong> {{ item.synonyms }}</p>
+                    <p><strong>Antonyms:</strong> {{ item.antonyms }}</p>
+                    <p><strong>Hypernyms:</strong> {{ item.hypernyms }}</p>
+                    <p><strong>Hyponyms:</strong> {{ item.hyponyms }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
